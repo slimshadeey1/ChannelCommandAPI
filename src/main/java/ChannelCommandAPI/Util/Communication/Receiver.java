@@ -1,6 +1,7 @@
 package ChannelCommandAPI.Util.Communication;
 
 import ChannelCommandAPI.API.*;
+import ChannelCommandAPI.Objects.*;
 import net.md_5.bungee.api.event.*;
 import net.md_5.bungee.api.plugin.*;
 import net.md_5.bungee.event.*;
@@ -28,7 +29,7 @@ public class Receiver implements Listener {
 
                 DataInputStream in = new DataInputStream(new ByteArrayInputStream(data));
                 String subchannel = in.readUTF();
-                BAConverter clean = new BAConverter(in);
+                BAin clean = new BAin(in);
                 ChannelExecMap.getExec(tag, subchannel).invoke(clean);
                 /**
                  * <p>This calls a registered executor and passes a BAConverter to the executor. This means you NEED to accept

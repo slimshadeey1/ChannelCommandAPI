@@ -1,6 +1,7 @@
 package ChannelCommandAPI.API;
 
 import ChannelCommandAPI.API.Interfaces.*;
+import ChannelCommandAPI.Objects.*;
 import ChannelCommandAPI.Util.Communication.*;
 import net.md_5.bungee.api.connection.*;
 
@@ -21,12 +22,12 @@ public class ChannelAPI {
         }
     }
 
-    public static void SendServer(String Channel, String SubChannel, String Server, ArrayList<String> Data) {
-        new Transmitter(Channel, SubChannel, Server, Data);
+    public static void SendServer(BAout data) {
+        new Transmitter(data);
     }
 
-    public static void SendPlayer(String Channel, String SubChannel, ProxiedPlayer Player, ArrayList<String> Data) {
-        new PlayerTransmitter(Player, Channel, SubChannel, Data);
+    public static void SendPlayer(ProxiedPlayer player, BAout data) {
+        new PlayerTransmitter(player, data);
     }
 }
 

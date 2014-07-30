@@ -1,21 +1,17 @@
-package ChannelCommandAPI.Util.Communication;
-
-import ChannelCommandAPI.API.*;
-import net.md_5.bungee.api.config.*;
+package ChannelCommandAPI.Objects;
 
 import java.io.*;
 import java.util.*;
 
-public class BAConverter {
-    /**
-     * This is the new standardized packet format that Battle Arena will be using for bungee cord Communication.
-     * Created by Ben Byers on 7/20/2014.
-     */
+/**
+ * Created by Ben Byers on 7/30/2014.
+ */
+public class BAin {
     private ArrayList<String> dat;
     private String server;
     private String subChannel;
 
-    public BAConverter(DataInputStream in) {
+    public BAin(DataInputStream in) {
         try {
             subChannel = in.readUTF();
             server = in.readUTF();
@@ -41,8 +37,7 @@ public class BAConverter {
         return server;
     }
 
-    public ServerInfo getServerInfo() {
-        return PluginRegister.getPlugin().getProxy().getServerInfo(server);
+    public String getSubChannel() {
+        return subChannel;
     }
 }
-

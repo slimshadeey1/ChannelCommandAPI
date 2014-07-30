@@ -2,7 +2,9 @@ package ChannelCommandAPI;
 
 import ChannelCommandAPI.API.*;
 import ChannelCommandAPI.API.Interfaces.*;
+import ChannelCommandAPI.Objects.*;
 import ChannelCommandAPI.Util.Communication.*;
+import net.md_5.bungee.api.*;
 
 /**
  * Created by Ben Byers on 7/27/2014.
@@ -25,13 +27,16 @@ public class Test implements Exec {
 
     //Example of a channel exec defined
     @ChannelInt(channel = "MyChannel", subchannel = "mySub")
-    public void onMySub(BAConverter clean) {
+    public void onMySub(BAin clean) { //Always have BAin in the arguments, your method is invoked with that! Just like a event in bukkit
+        clean.getServer();
+        clean.getData();
+        clean.getSubChannel();
         //Stuff to run
     }
 
     //Example of a command exec combined
     @CommandInt(command = "Test")
-    public void onMyCommand() {
+    public void onMyCommand(CommandSender sender, String[] args) {//Always like this or command feature will not work!
         //Stuff to run
     }
 }
